@@ -20,8 +20,8 @@ class SignPresenter extends BasePresenter
 	protected function createComponentSignInForm()
 	{
 		$form = new Nette\Application\UI\Form;
-		$form->addText('username', 'Username:')
-			->setRequired('Please enter your username.');
+		$form->addText('email', 'Email:')
+			->setRequired('Please enter your email.');
 
 		$form->addPassword('password', 'Password:')
 			->setRequired('Please enter your password.');
@@ -47,10 +47,9 @@ class SignPresenter extends BasePresenter
 		}
 
 		try {
-			$this->getUser()->login($values->username, $values->password);
-			$this->redirect('Homepage:');
-
-		} catch (Nette\Security\AuthenticationException $e) {
+			$this->getUser()->login($values->email, $values->password);
+			$this->redirect("Homepage:default");
+		} catch (\Nette\Security\AuthenticationException $e) {
 			$form->addError($e->getMessage());
 		}
 	}
