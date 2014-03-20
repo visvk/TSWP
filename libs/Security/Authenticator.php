@@ -14,9 +14,12 @@ class Authenticator extends Nette\Object implements Nette\Security\IAuthenticato
 	/**
 	 * @param Nette\Database\Context
 	 */
-	public function __construct(Nette\Database\Context $database)
+//	public function __construct(Nette\Database\Context $database)
+//	{
+//		$this->database = $database;
+//	}
+	public function __construct()
 	{
-		$this->database = $database;
 	}
 
 	/**
@@ -26,7 +29,8 @@ class Authenticator extends Nette\Object implements Nette\Security\IAuthenticato
 	 */
 	public function authenticate(array $credentials) {
 		list($login, $password) = $credentials;
-		$row = $this->database->table('user')->where('email', $login)->fetch();
+//		$row = $this->database->table('user')->where('email', $login)->fetch();
+		$row = array('id' => 1, 'name' => 'student', 'role' => 'student');
 
 		if (!$row) {
 			throw new AuthenticationException('Zlý login.', self::IDENTITY_NOT_FOUND);
@@ -38,7 +42,8 @@ class Authenticator extends Nette\Object implements Nette\Security\IAuthenticato
 		*/
 
 //		unset($row->password);
-		return new Identity($row->id, $row->role, $row->toArray());
+//		return new Identity($row->id, $row->role, $row->toArray());
+		return new Identity($row['id'], $row['role'], $row);
 
 	}
 
