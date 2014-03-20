@@ -1,0 +1,30 @@
+{block content}
+<h1><i class="glyphicon-list glyphicon"></i> Moje články</h1>
+<ol class="breadcrumb">
+
+	<li><a n:href="Homepage:" class="active">Homepagey</a></li>
+</ol>
+{if $count > 0}
+	<table class="table table-hover table-striped">
+		<thead>
+		<tr>
+			<th>Názov článku</th>
+			<th>Popis</th>
+			<th>Termín odovzdania</th>
+			<th>Aktuálna verzia</th>
+			<th>&nbsp;</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><a n:href="Version:default">{$article['name']}</a></td>
+			<td>{$article['description']}</td>
+			<td>{$article['created']|date}</td>
+			<td>0.0.1</td>
+			<td>|||||||--  80%</td>
+		</tr>
+		</tbody>
+	</table>
+{else}
+	Žiadne články neboli nájdené.
+{/if}

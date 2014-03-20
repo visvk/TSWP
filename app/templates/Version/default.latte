@@ -1,0 +1,26 @@
+{block content}
+<h1><i class="glyphicon-list glyphicon"></i> Verzie článku</h1>
+<ol class="breadcrumb">
+
+	<li><a n:href="Article:" class="active">Všetky články</a></li>
+</ol>
+{if $count > 0}
+	<table class="table table-hover table-striped">
+		<thead>
+		<tr>
+			<th>Verzia</th>
+			<th>Vytvorené</th>
+			<th>&nbsp;</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><a n:href="File:">{$version['version']}</a></td>
+			<td>{$version['created']|date}</td>
+			<td> OK </td>
+		</tr>
+		</tbody>
+	</table>
+{else}
+	Žiadne verzie neboli nájdené.
+{/if}
