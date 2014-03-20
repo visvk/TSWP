@@ -30,7 +30,7 @@ class Authenticator extends Nette\Object implements Nette\Security\IAuthenticato
 	public function authenticate(array $credentials) {
 		list($login, $password) = $credentials;
 //		$row = $this->database->table('user')->where('email', $login)->fetch();
-		$row = array('id' => 1, 'name' => 'student', 'role' => 'student');
+		$row = array('id' => 1, 'email' => 'student', 'role' => 'student');
 
 		if (!$row) {
 			throw new AuthenticationException('Zlý login.', self::IDENTITY_NOT_FOUND);
