@@ -21,5 +21,10 @@ class FilePresenter extends BasePresenter{
 		);
 		$this->template->count = 1;
 	}
+        
+        public function actionAdd()
+        {
+            $this->template->id = 1;
+        }
 
 } 
