@@ -5983,4 +5983,9 @@ td.visible-print {
     display: none !important;
   }
 }
-.wrapper{.make_row();}
+
+.remove
+{
+    background-image: url('../images/remove.png');
+}
+//.wrapper{.make_row();}
