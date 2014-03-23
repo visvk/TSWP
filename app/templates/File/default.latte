@@ -6,12 +6,12 @@
 </ol>
 {if $count > 0}
     
-    <div>
-        <ul id="menu" class="custom-main-menu-list">
- 	 <li><a n:href="File:add" class="btn btn-block btn-default"><span class="glyphicon glyphicon-list"></span> Pridať súbor</a></li>
- 	
- 	 </ul>
-    </div>
+    {*<div>*}
+        {*<ul id="menu" class="custom-main-menu-list">*}
+ 	 {*<li><a n:href="File:add" class="btn btn-block btn-default"><span class="glyphicon glyphicon-list"></span> Pridať súbor</a></li>*}
+ 	{**}
+ 	 {*</ul>*}
+    {*</div>*}
 	<table class="table table-hover table-striped">
 		<thead>
 		<tr>
@@ -41,3 +41,35 @@
 {else}
 	Žiadne súbory neboli nájdené.
 {/if}
+<div class="form-group">
+	<button class="btn btn-danger" id="button-pridat-subor"><i class="glyphicon glyphicon-plus"></i> Pridať nový súbor</button></div>
+<div id="subor-form">
+
+	{form addEditFileForm class=>"form form-horizontal nodisplay", id=>"form2"}
+	<h3>Pridať nový súbor</h3>
+	<div class="form-group">
+		{label name class=>"col-sm-2 control-label"/}
+		<div class="col-sm-5">{input name class=>"form-control" }</div>
+	</div>
+	<div class="form-group">
+		{label description class=>"col-sm-2 control-label"/}
+		<div class="col-sm-5">{input description class=>"form-control"}</div>
+	</div>
+	<div class="form-group">
+		{label file class=>"col-sm-2 control-label"/}
+		<div class="col-sm-5">
+			{input file class=>"form-control"}
+		</div>
+	</div>
+	<div class="form-group ">
+		<div class="col-sm-5 col-sm-offset-2">
+			{input submit class=>"btn btn-danger"}
+		</div>
+		{/form}
+	</div>
+	<script>
+
+		$( "#button-pridat-subor" ).click(function() {
+			$( "#form2" ).fadeToggle( "slow", "linear" );
+		});
+	</script>
