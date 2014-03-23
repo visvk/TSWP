@@ -8,6 +8,7 @@
 
 namespace App\Presenters;
 
+use Nette\Application\UI\Form;
 
 class ArticlePresenter extends BasePresenter
 {
@@ -22,4 +23,20 @@ class ArticlePresenter extends BasePresenter
 		$this->template->count = 1;
 	}
 
+	public function createComponentAddEditArticleForm()
+	{
+		$form = new Form;
+		$form->addText('name', 'Názov')
+			->addRule(Form::FILLED,'Zadajte názov článku.');
+		$form->addTextArea('description','Popis');
+		$form->addSubmit('submit', 'Vytvoriť');
+		$form->onSuccess[] = $this->processAddEditArticleForm;
+		return $form;
+	}
+
+	public function processAddEditArticleForm(Form $form)
+	{
+		$values = $form->getValues();
+		$this->redirect('this');
+	}
 } 

@@ -24,3 +24,29 @@
 {else}
 	Žiadne verzie neboli nájdené.
 {/if}
+<div class="form-group">
+	<button class="btn btn-danger" id="button-pridat-verziu"><i class="glyphicon glyphicon-plus"></i> Pridať novú verziu</button></div>
+<div id="subor-form">
+
+	{form addEditVersionForm class=>"form form-horizontal nodisplay", id=>"form2"}
+	<h3>Pridať nový verzius</h3>
+	<div class="form-group">
+		{label version class=>"col-sm-2 control-label"/}
+		<div class="col-sm-5">{input version class=>"form-control" }</div>
+	</div>
+	<div class="form-group">
+		{label description class=>"col-sm-2 control-label"/}
+		<div class="col-sm-5">{input description class=>"form-control"}</div>
+	</div>
+	<div class="form-group ">
+		<div class="col-sm-5 col-sm-offset-2">
+			{input submit class=>"btn btn-danger"}
+		</div>
+		{/form}
+	</div>
+	<script>
+
+		$( "#button-pridat-verziu" ).click(function() {
+			$( "#form2" ).fadeToggle( "slow", "linear" );
+		});
+	</script>
