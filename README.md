@@ -20,9 +20,11 @@ you will download the code.
   - run in project directory: install composer
 
 4. Database (user: root, password: root)
-  - to sa dohodneme este :D
+  - create DB with tswp.sql file
 
 5. Run page
+	login: student@student.tuke.sk
+	password: student
 
 ##Project description
 
