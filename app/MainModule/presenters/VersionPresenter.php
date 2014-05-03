@@ -6,13 +6,13 @@
  * Time: 21:09
  */
 
-namespace App\Presenters;
+namespace  Mov\MainModule\Presenters;
 
 use Nette\Application\UI\Form;
 
 class VersionPresenter extends BasePresenter {
 
-	public function actionDefault()
+	public function actionDefault($id)
 	{
 		$this->template->version = array(
 			'version' => '0.0.1',

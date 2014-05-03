@@ -16,19 +16,23 @@ nette:
 	application:
 		errorPresenter: Error
 		mapping:
-			*: App\*Module\Presenters\*Presenter
+			*: Mov\*Module\Presenters\*Presenter
 
-	#database:
-	#	dsn: 'mysql:host=localhost;dbname=tswp'
-	#	user: 'root'
-	#	password: 'root'
+	database:
+		dsn: 'mysql:host=localhost;dbname=tswp'
+		user: 'root'
+		password: 'root'
 
 	session:
 		expiration: 14 days
 
 
 services:
-	- App\RouterFactory
+	- Mov\RouterFactory
 	authenticator: Security\Authenticator
+	articleModel: Models\Article
+	versionModel: Models\Version
+	fileModel: Models\File
+	userModel: Models\User
 
-	router: @App\RouterFactory::createRouter
+	router: @Mov\RouterFactory::createRouter

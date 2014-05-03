@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Presenters;
+namespace  Mov\MainModule\Presenters;
 
 use Nette,
-	App\Model;
-
+	Nette\Application\UI\Form;
 
 /**
  * Sign in/out presenters.
@@ -12,14 +11,13 @@ use Nette,
 class SignPresenter extends BasePresenter
 {
 
-
 	/**
 	 * Sign-in form factory.
 	 * @return Nette\Application\UI\Form
 	 */
 	protected function createComponentSignInForm()
 	{
-		$form = new Nette\Application\UI\Form;
+		$form = new Form;
 		$form->addText('email', 'Email:')
 			->setRequired('Please enter your email.');
 
@@ -50,6 +48,7 @@ class SignPresenter extends BasePresenter
 			$this->getUser()->login($values->email, $values->password);
 			$this->redirect("Homepage:default");
 		} catch (\Nette\Security\AuthenticationException $e) {
+			$this->flashMessage($e->getMessage());
 			$form->addError($e->getMessage());
 		}
 	}

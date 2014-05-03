@@ -14,12 +14,9 @@ class Authenticator extends Nette\Object implements Nette\Security\IAuthenticato
 	/**
 	 * @param Nette\Database\Context
 	 */
-//	public function __construct(Nette\Database\Context $database)
-//	{
-//		$this->database = $database;
-//	}
-	public function __construct()
+	public function __construct(Nette\Database\Context $database)
 	{
+		$this->database = $database;
 	}
 
 	/**
@@ -29,22 +26,20 @@ class Authenticator extends Nette\Object implements Nette\Security\IAuthenticato
 	 */
 	public function authenticate(array $credentials) {
 		list($login, $password) = $credentials;
-//		$row = $this->database->table('user')->where('email', $login)->fetch();
-		$row = array('id' => 1, 'email' => 'student', 'role' => 'student');
+		$row = $this->database->table('user')->where('email', $login)->fetch();
+//		$row = array('id' => 1, 'email' => 'student', 'role' => 'student');
 
 		if (!$row) {
 			throw new AuthenticationException('Zlý login.', self::IDENTITY_NOT_FOUND);
 		}
-		/*
-				if ($row->password !== sha1($password)) {
-						throw new AuthenticationException('Zlé heslo.', self::INVALID_CREDENTIAL);
-				}
-		*/
 
+		if ($row->password !== sha1($password)) {
+				throw new AuthenticationException('Zlé heslo.', self::INVALID_CREDENTIAL);
+		}
+
+		// Active Row is read only
 //		unset($row->password);
-//		return new Identity($row->id, $row->role, $row->toArray());
-		return new Identity($row['id'], $row['role'], $row);
-
+		return new Identity($row->id, $row->role, $row->toArray());
 	}
 
 }
