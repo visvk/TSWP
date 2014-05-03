@@ -27,6 +27,7 @@ class ArticlePresenter extends BasePresenter
 	{
 		$values = $form->getValues();
 		$values['user_id'] = $this->user->getId();
+                $values['created'] = date('Y-m-d');
 		$this->articleModel->addEdit($values);
 		$this->redirect('this');
 	}

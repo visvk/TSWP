@@ -35,6 +35,7 @@ class VersionPresenter extends BasePresenter {
 	{
 		$values = $form->getValues();
 		$values['article_id'] = $this->presenter->getParameter('articleId');
+                $values['created'] = date('Y-m-d');
 		$this->versionModel->addEdit($values);
 		$this->redirect('this');
 	}
