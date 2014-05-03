@@ -15,15 +15,10 @@ use Nette\Application\Responses\FileResponse,
 
 class FilePresenter extends BasePresenter{
 
-	public function actionDefault()
+	public function actionDefault($versionId)
 	{
-		$this->template->file = array(
-			'name' => 'tema.doc',
-			'type' => 'doc',
-			'url' => '/0.0.1/tema.doc',
-			'created' => '2014-03-03'
-		);
-		$this->template->count = 1;
+		$this->template->files = $this->fileModel->getFiles($versionId);
+		$this->template->count = $this->template->files->count();
 	}
 
 	public function actionAdd()
@@ -36,7 +31,7 @@ class FilePresenter extends BasePresenter{
 		$form = new Form;
 		$form->addText('name', 'Názov')
 			->addRule(Form::FILLED,'Zadajte názov súboru.');
-		$form->addTextArea('description','Popis');
+//		$form->addTextArea('description','Popis');
 		$form->addUpload('file', 'Dokument')
 			->addRule(Form::FILLED,'Musi byt vyplnený.')
 			->addRule(Form::MAX_FILE_SIZE, 'Príliš veľký súbor.', 10 * 1024 * 1024);
@@ -49,6 +44,11 @@ class FilePresenter extends BasePresenter{
 	public function processAddEditFileForm(Form $form)
 	{
 		$values = $form->getValues();
+		$values['version_id'] = $this->presenter->getParameter("versionId");
+		$values['type'] = "file";
+		$values['url'] = "/store/file";
+		unset($values['file']);
+		$this->fileModel->addEdit($values);
 		$this->redirect('this');
 	}
 
