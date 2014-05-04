@@ -18,6 +18,7 @@ class FilePresenter extends BasePresenter{
 	public function actionDefault($versionId)
 	{
 		$this->template->files = $this->fileModel->getFiles($versionId);
+		$this->template->version = $this->versionModel->get($versionId);
 		$this->template->count = $this->template->files->count();
 	}
 
@@ -102,6 +103,7 @@ class FilePresenter extends BasePresenter{
 
 			$values['created'] = new \Nette\DateTime;
 			$this->fileModel->addEdit($values);
+			$this->versionModel->update($versionId, array("version_2" => $version->version_2 + 1));
 			$this->flashMessage("Súbor nahratý");
 		}else {
 			$this->flashMessage("CHYBA súboru");
