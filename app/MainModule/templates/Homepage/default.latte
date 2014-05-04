@@ -1,4 +1,30 @@
 {* This is the welcome page, you can delete it *}
 
 {block content}
-Moja uvodna stranka. Novinky atd.
+<h1>MOV</h1>
+<h2>Aplikácia na vývoj vedeckých článkov</h2>
+
+<div class="row">
+	<div class="col-md-8">Aktuálny čas: <span id="time"></span></div>
+	<div class="col-md-8">Počasie v Košiciach: <span id="weather"></span> <span id="icon"></span></div>
+</div>
+<script>
+	$.ajax({
+		type: "GET",
+		url: "http://api.openweathermap.org/data/2.5/weather?q=Kosice,sk",
+		dataType: "json",
+		success: function(data) {
+			var url = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+			$( "#icon").before('<img src=' + url + '>')
+			$( "#weather").text(data.main.temp - 273.15 + "°C")
+		}
+	});
+	var myVar=setInterval(function(){ myTimer()},1000);
+
+	function myTimer()
+	{
+		var d=new Date();
+		var t=d.toLocaleTimeString();
+		document.getElementById("time").innerHTML=t;
+	}
+</script>

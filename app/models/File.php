@@ -11,6 +11,12 @@ class File extends Base
 		return $files;
 	}
 
+	public function getMyFiles()
+	{
+		$files= $this->getAll()->where('version.article.user_id', $this->user->getId())->order('name ASC');
+		return $files;
+	}
+
 	public function addEdit($values, $id = NULL)
 	{
 //		$version = $this->db->table('version')->where("id", $values->version_id);

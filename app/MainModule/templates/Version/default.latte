@@ -17,7 +17,7 @@
 		<tr n:foreach="$versions as $version">
 			<td><a n:href="File: versionId => $version->id">{$version['version_1']}.{$version['version_2']}</a></td>
 			<td>{$version['created']|date}</td>
-			<td><a n:href="deleteVersion! $version->id">Zmazat</a></td>
+			<td><a n:href="deleteVersion! $version->id"><i class="glyphicon glyphicon-remove"></i></a></td>
 		</tr>
 		</tbody>
 	</table>
