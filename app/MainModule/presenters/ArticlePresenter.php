@@ -8,7 +8,7 @@ class ArticlePresenter extends BasePresenter
 
 	public function actionDefault()
 	{
-		$this->template->articles = $this->articleModel->getArticles();
+		$this->template->articles = $articles =  $this->articleModel->getArticles();
 		$this->template->count = 1;
 	}
 

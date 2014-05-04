@@ -104,6 +104,7 @@ class FilePresenter extends BasePresenter{
 			$values['created'] = new \Nette\DateTime;
 			$this->fileModel->addEdit($values);
 			$this->versionModel->update($versionId, array("version_2" => $version->version_2 + 1));
+			$this->articleModel->update($version->article_id, array("actual_version" =>  $version->version_1 . "." . ($version->version_2 + 1)));
 			$this->flashMessage("Súbor nahratý");
 		}else {
 			$this->flashMessage("CHYBA súboru");

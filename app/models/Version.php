@@ -11,6 +11,12 @@ class Version extends Base
 		return $versions;
 	}
 
+	public function getActualVersion($articleId)
+	{
+		$versions = $this->getAll()->where('article_id', $articleId)->order('version_1 ASC, version_2 ASC')->limit(1);
+		return $versions;
+	}
+
 	public function addEdit($values, $id = NULL)
 	{
 		if(is_null($id)) {

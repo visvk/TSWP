@@ -18,6 +18,13 @@ class VersionPresenter extends BasePresenter {
 		$this->template->count = 1;
 	}
 
+	public function handleDeleteVersion($versionId) {
+		$version = $this->versionModel->get($versionId);
+		$version->delete();
+		// TODO: delete all files 
+
+		$this->invalidateControl();
+	}
 	public function createComponentAddEditVersionForm()
 	{
 		$form = new Form;
