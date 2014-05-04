@@ -51,6 +51,17 @@ class FilePresenter extends BasePresenter{
 		$this->invalidateControl();
 	}
 
+	public function handleDeleteFile($fileId)
+	{
+		$document = $this->fileModel->get($fileId);
+		if ($document->name) {
+			unlink($this->context->parameters['wwwDir'] . '/../storage/files/'.$document->url);
+		}
+		$document->delete();
+		$this->flashMessage('Súbor zmazaný.', 'success');
+		$this->redirect('this');
+	}
+
 	public function createComponentAddEditFileForm()
 	{
 		$form = new Form;

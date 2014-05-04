@@ -12,7 +12,12 @@ To clone a repository means that you will download the whole code of the reposit
  
 you will download the code.
 
-3. Install composer 
+	for Linux:
+	- sudo chmod 777 -R temp
+	- sudo chmod 777 -R log
+	- sudo chmod 777 -R storage
+
+3. Install composer
 
   - homepage: http://getcomposer.org/
   - instalation: (see http://getcomposer.org/download)

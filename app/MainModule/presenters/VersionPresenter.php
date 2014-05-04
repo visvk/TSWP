@@ -21,7 +21,7 @@ class VersionPresenter extends BasePresenter {
 	public function handleDeleteVersion($versionId) {
 		$version = $this->versionModel->get($versionId);
 		$version->delete();
-		// TODO: delete all files 
+		// TODO: delete all files
 
 		$this->invalidateControl();
 	}
