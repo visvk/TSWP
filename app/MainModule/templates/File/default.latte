@@ -23,7 +23,7 @@
 		</thead>
 		<tbody>
 		<tr n:foreach="$files as $file">
-			<td><a href="#">{$file['name']}</a></td>
+			<td><a n:href="downloadFile! $file->id">{$file['name']}</a></td>
 			<td>{$file['created']|date}</td>
 			<td> {$file['type']} </td>
                      
