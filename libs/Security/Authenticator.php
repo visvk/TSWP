@@ -30,11 +30,11 @@ class Authenticator extends Nette\Object implements Nette\Security\IAuthenticato
 //		$row = array('id' => 1, 'email' => 'student', 'role' => 'student');
 
 		if (!$row) {
-			throw new AuthenticationException('Zlý login.', self::IDENTITY_NOT_FOUND);
+			throw new AuthenticationException('Nesprávny login.', self::IDENTITY_NOT_FOUND);
 		}
 
 		if ($row->password !== sha1($password)) {
-				throw new AuthenticationException('Zlé heslo.', self::INVALID_CREDENTIAL);
+				throw new AuthenticationException('Nesprávne heslo.', self::INVALID_CREDENTIAL);
 		}
 
 		// Active Row is read only

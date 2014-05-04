@@ -19,10 +19,10 @@ class SignPresenter extends BasePresenter
 	{
 		$form = new Form;
 		$form->addText('email', 'Email:')
-			->setRequired('Please enter your email.');
+			->setRequired('Zadajte Vaše prihlasovacie meno.');
 
 		$form->addPassword('password', 'Password:')
-			->setRequired('Please enter your password.');
+			->setRequired('Zadajte heslo.');
 
 		$form->addCheckbox('remember', 'Keep me signed in');
 
