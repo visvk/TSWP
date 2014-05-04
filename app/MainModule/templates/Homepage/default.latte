@@ -15,8 +15,10 @@
 		dataType: "json",
 		success: function(data) {
 			var url = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+			var temperature = data.main.temp - 273.15
 			$( "#icon").before('<img src=' + url + '>')
-			$( "#weather").text(data.main.temp - 273.15 + "°C")
+
+			$( "#weather").text(temperature.toFixed(0) + "°C")
 		}
 	});
 	var myVar=setInterval(function(){ myTimer()},1000);
